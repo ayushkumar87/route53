@@ -1,0 +1,28 @@
+services:
+  # ─── FastAPI Backend ───────────────────────────────────────────────
+  - type: web
+    name: route53-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true          # Render auto-generates a secure random value
+      - key: DATABASE_URL
+        value: sqlite:////data/route53.db   # points to the persistent disk below
+    disk:
+      name: sqlite-data
+      mountPath: /data
+      sizeGB: 1
+
+  # ─── Next.js Frontend ─────────────────────────────────────────────
+  - type: web
+    name: route53-frontend
+    runtime: node
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: https://route53-backend.onrender.com   # update after backend deploys

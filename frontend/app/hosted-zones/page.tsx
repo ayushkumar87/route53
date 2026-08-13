@@ -12,6 +12,7 @@ import { Pagination } from "@/components/ui/Pagination";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/Table";
 import { Search, Plus, Trash2, Edit2, RefreshCw } from "lucide-react";
 import Link from "next/link";
+import { API_BASE_URL } from "@/lib/config";
 
 type HostedZone = {
   id: number;
@@ -46,7 +47,7 @@ export default function HostedZonesPage() {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/hosted-zones?search=${encodeURIComponent(
+        `${API_BASE_URL}/hosted-zones?search=${encodeURIComponent(
           search
         )}&page=${page}&limit=${limit}`,
         {
@@ -74,8 +75,8 @@ export default function HostedZonesPage() {
     if (!token) return;
 
     const url = editingId
-      ? `http://127.0.0.1:8000/hosted-zones/${editingId}`
-      : "http://127.0.0.1:8000/hosted-zones";
+      ? `${API_BASE_URL}/hosted-zones/${editingId}`
+      : `${API_BASE_URL}/hosted-zones`;
 
     const response = await fetch(url, {
       method: editingId ? "PUT" : "POST",
@@ -101,7 +102,7 @@ export default function HostedZonesPage() {
     if (!token || !zoneToDelete) return;
 
     const response = await fetch(
-      `http://127.0.0.1:8000/hosted-zones/${zoneToDelete.id}`,
+      `${API_BASE_URL}/hosted-zones/${zoneToDelete.id}`,
       {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },

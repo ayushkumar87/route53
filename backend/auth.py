@@ -1,3 +1,4 @@
+import os
 from passlib.context import CryptContext
 from jose import jwt, JWTError
 from datetime import datetime, timedelta
@@ -6,7 +7,7 @@ from fastapi.security import OAuth2PasswordBearer
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-SECRET_KEY = "route53-secret-key"
+SECRET_KEY = os.environ.get("SECRET_KEY", "route53-secret-key-change-in-prod")
 ALGORITHM = "HS256"
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")

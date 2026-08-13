@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import { Globe, Layers, Plus, Map } from "lucide-react";
 import { Spinner } from "@/components/ui/Spinner";
+import { API_BASE_URL } from "@/lib/config";
 
 export default function DashboardPage() {
   const { token } = useAuth();
@@ -19,7 +20,7 @@ export default function DashboardPage() {
 
     async function loadStats() {
       try {
-        const response = await fetch("http://127.0.0.1:8000/stats", {
+        const response = await fetch(`${API_BASE_URL}/stats`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

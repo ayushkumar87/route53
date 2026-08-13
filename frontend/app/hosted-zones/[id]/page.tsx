@@ -12,6 +12,7 @@ import { Pagination } from "@/components/ui/Pagination";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/Table";
 import { Search, Plus, Trash2, Edit2, RefreshCw, Filter } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
+import { API_BASE_URL } from "@/lib/config";
 
 type HostedZone = {
   id: number;
@@ -65,7 +66,7 @@ export default function HostedZoneDetailsPage(props: { params: Promise<{ id: str
     
     async function fetchZone() {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/hosted-zones/${zoneId}`, {
+        const response = await fetch(`${API_BASE_URL}/hosted-zones/${zoneId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (response.ok) {
@@ -95,7 +96,7 @@ export default function HostedZoneDetailsPage(props: { params: Promise<{ id: str
       });
 
       const response = await fetch(
-        `http://127.0.0.1:8000/hosted-zones/${zoneId}/records?${query.toString()}`,
+        `${API_BASE_URL}/hosted-zones/${zoneId}/records?${query.toString()}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -121,8 +122,8 @@ export default function HostedZoneDetailsPage(props: { params: Promise<{ id: str
     if (!token) return;
 
     const url = editingId
-      ? `http://127.0.0.1:8000/records/${editingId}`
-      : `http://127.0.0.1:8000/records`;
+      ? `${API_BASE_URL}/records/${editingId}`
+      : `${API_BASE_URL}/records`;
 
     const body = {
       hosted_zone_id: zoneId,
@@ -156,7 +157,7 @@ export default function HostedZoneDetailsPage(props: { params: Promise<{ id: str
     if (!token || !recordToDelete) return;
 
     const response = await fetch(
-      `http://127.0.0.1:8000/records/${recordToDelete.id}`,
+      `${API_BASE_URL}/records/${recordToDelete.id}`,
       {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
