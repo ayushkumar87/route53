@@ -9,12 +9,7 @@ services:
     envVars:
       - key: SECRET_KEY
         generateValue: true          # Render auto-generates a secure random value
-      - key: DATABASE_URL
-        value: sqlite:////data/route53.db   # points to the persistent disk below
-    disk:
-      name: sqlite-data
-      mountPath: /data
-      sizeGB: 1
+      # DATABASE_URL intentionally omitted — defaults to sqlite:///./route53.db (relative path)
 
   # ─── Next.js Frontend ─────────────────────────────────────────────
   - type: web
