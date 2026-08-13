@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-aws-bg: #f2f3f3;
+  --color-aws-nav: #232f3e;
+  --color-aws-header: #0f1b2a;
+  --color-aws-primary: #ec7211;
+  --color-aws-primary-hover: #eb5f07;
+  --color-aws-secondary: #ffffff;
+  --color-aws-secondary-border: #545b64;
+  --color-aws-secondary-hover: #f2f3f3;
+  --color-aws-link: #0073bb;
+  --color-aws-link-hover: #005a92;
+  --color-aws-text: #16191f;
+  --color-aws-text-muted: #545b64;
+  --color-aws-border: #eaeded;
+  --color-aws-table-header: #fafafa;
+  --color-aws-surface: #ffffff;
+  --color-aws-danger: #d13212;
+  --color-aws-danger-hover: #b02a0f;
+  
+  --color-background: var(--color-aws-bg);
+  --color-foreground: var(--color-aws-text);
+  --font-sans: "Inter", "Helvetica Neue", "Arial", sans-serif;
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+/* Base resets */
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+a {
+  color: var(--color-aws-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Utilities for scrollbar maybe, but let's keep it simple */
