@@ -1,60 +1,211 @@
-# AWS Route53 Clone
+# 🌐 AWS Route53 Clone
 
-A full-stack clone of the AWS Route53 DNS management console.
+<p align="center">
+  <strong>A full-stack AWS Route53-inspired DNS management console</strong>
+</p>
 
-## Tech Stack
-- **Frontend:** Next.js (TypeScript), Tailwind CSS
-- **Backend:** FastAPI (Python)
-- **Database:** SQLite
+<p align="center">
+  Manage Hosted Zones and DNS Records through a modern cloud-console interface.
+</p>
 
-## Prerequisites
-- Node.js v18+
-- Python 3.9+
+<p align="center">
 
-## Setup
+![Next.js](https://img.shields.io/badge/Next.js-TypeScript-black?logo=next.js)
+![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5+-3178C6?logo=typescript)
+![FastAPI](https://img.shields.io/badge/FastAPI-Python-009688?logo=fastapi)
+![Python](https://img.shields.io/badge/Python-3.9+-3776AB?logo=python)
+![SQLite](https://img.shields.io/badge/Database-SQLite-003B57?logo=sqlite)
+![SQLAlchemy](https://img.shields.io/badge/ORM-SQLAlchemy-D71F00)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss)
+![JWT](https://img.shields.io/badge/Auth-JWT-purple?logo=jsonwebtokens)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-### Backend
-```bash
-cd backend
-venv\Scripts\activate          # Windows
-# source venv/bin/activate     # macOS/Linux
-pip install fastapi uvicorn sqlalchemy passlib[bcrypt] python-jose
-python -m uvicorn main:app --reload --host 127.0.0.1 --port 8000
-```
+</p>
 
-### Frontend
-```bash
-cd frontend
-npm install
-npm run dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000)
+## 🚀 Live Demo
 
-> Backend runs on `http://127.0.0.1:8000` — both servers must be running simultaneously.
+### 👉 [Launch AWS Route53 Clone](https://route53-three.vercel.app/)
 
-## Features
-- JWT authentication (register, login, logout)
-- Full CRUD for Hosted Zones (search, pagination)
-- Full CRUD for DNS Records (A, AAAA, CNAME, TXT, MX, NS, PTR, SRV, CAA) with type filter
-- AWS-accurate UI (sidebar, tables, modals, breadcrumbs)
-- Dashboard with live stats
+**Live Application:** https://route53-three.vercel.app/
 
-## Database Schema
-| Table | Columns |
-|---|---|
-| `users` | id, email, password_hash |
-| `hosted_zones` | id, name, description, user_id |
-| `dns_records` | id, hosted_zone_id, name, type, value, ttl |
+> The frontend is deployed on Vercel.  
+> The backend API must be running and accessible for full functionality.
 
-## API Endpoints
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/register` | Register user |
-| POST | `/login` | Login → returns JWT |
-| GET | `/stats` | Zone + record counts |
-| GET/POST | `/hosted-zones` | List / Create zones |
-| GET/PUT/DELETE | `/hosted-zones/{id}` | Read / Update / Delete zone |
-| GET | `/hosted-zones/{id}/records` | List records |
-| POST | `/records` | Create record |
-| PUT/DELETE | `/records/{id}` | Update / Delete record |
+---
+
+## 📌 About The Project
+
+**AWS Route53 Clone** is a full-stack web application inspired by the AWS Route53 DNS management console.
+
+The project provides a cloud-console-style interface for managing:
+
+- 👤 User authentication
+- 🌐 Hosted Zones
+- 📡 DNS Records
+- 🔎 Search
+- 🎯 Filtering
+- 📄 Pagination
+- ✏️ CRUD operations
+- 🔐 JWT-based authorization
+
+The project was built to demonstrate practical **full-stack development, REST API design, authentication, database modeling, and modern frontend development**.
+
+---
+
+# ✨ Features
+
+## 🔐 Authentication
+
+- User registration
+- User login
+- JWT authentication
+- Password hashing
+- Protected API routes
+- Persistent authentication session
+- Logout
+
+---
+
+## 🌐 Hosted Zone Management
+
+Complete CRUD functionality:
+
+- ➕ Create Hosted Zone
+- 👀 View Hosted Zones
+- ✏️ Edit Hosted Zone
+- 🗑️ Delete Hosted Zone
+- 🔎 Search Hosted Zones
+- 📄 Pagination
+- 👤 User-specific Hosted Zones
+
+---
+
+## 📡 DNS Record Management
+
+Supported DNS record types:
+
+| Record Type | Support |
+|:---:|:---:|
+| A | ✅ |
+| AAAA | ✅ |
+| CNAME | ✅ |
+| TXT | ✅ |
+| MX | ✅ |
+| NS | ✅ |
+| PTR | ✅ |
+| SRV | ✅ |
+| CAA | ✅ |
+
+Operations:
+
+- ➕ Create DNS Record
+- 👀 View DNS Records
+- ✏️ Edit DNS Record
+- 🗑️ Delete DNS Record
+- 🔎 Search Records
+- 🎯 Filter by Record Type
+- 📄 Pagination
+
+---
+
+## 📊 Dashboard
+
+The application includes a Route53-inspired dashboard with:
+
+- Hosted Zone statistics
+- DNS Record statistics
+- Quick actions
+- Resource overview
+- Cloud-console-style navigation
+
+---
+
+## 🎨 UI Features
+
+The frontend is designed to resemble a modern AWS cloud console.
+
+- AWS-inspired sidebar
+- Top navigation
+- Breadcrumbs
+- Data tables
+- Search controls
+- Filter controls
+- Pagination
+- Forms
+- Modals
+- Confirmation dialogs
+- Toast notifications
+- Loading states
+- Empty states
+- Error handling
+- Responsive layout
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+
+![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss)
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Next.js App Router
+
+---
+
+## Backend
+
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python)
+
+- FastAPI
+- Python
+- SQLAlchemy
+- JWT
+- Passlib
+- REST APIs
+
+---
+
+## Database
+
+![SQLite](https://img.shields.io/badge/SQLite-003B57?logo=sqlite)
+
+- SQLite
+- SQLAlchemy ORM
+
+---
+
+# 🏗️ Architecture
+
+```text
+┌─────────────────────────────┐
+│          Frontend           │
+│       Next.js + React       │
+│       TypeScript + CSS      │
+└──────────────┬──────────────┘
+               │
+               │ HTTP / JSON
+               │ JWT
+               ▼
+┌─────────────────────────────┐
+│          Backend            │
+│           FastAPI           │
+│        REST API Layer       │
+└──────────────┬──────────────┘
+               │
+               │ SQLAlchemy ORM
+               ▼
+┌─────────────────────────────┐
+│          Database           │
+│            SQLite           │
+│         route53.db          │
+└─────────────────────────────┘
